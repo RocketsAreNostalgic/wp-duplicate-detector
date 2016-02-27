@@ -1,5 +1,6 @@
 <?php
 namespace OrionRush\DuplicateDetector\Admin;
+
 if ( ! defined( 'ABSPATH' ) ) die();
 
 add_action('admin_menu',  __NAMESPACE__ . '\\add_admin_menu');
