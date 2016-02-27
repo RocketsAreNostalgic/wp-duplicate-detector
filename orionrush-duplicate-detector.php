@@ -1,7 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) die();
-
 namespace OrionRush\DuplicateDetector;
+
+if ( ! defined( 'ABSPATH' ) ) die();
 
 /*
 Plugin Name:   Duplicate Detector

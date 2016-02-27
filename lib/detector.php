@@ -1,7 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) die();
-
 namespace OrionRush\DuplicateDetector\Enabled;
+
+if ( ! defined( 'ABSPATH' ) ) die();
 
 /**
  * Enqueues styles and scripts to  post types if they have enabled in the admin settings page

@@ -1,12 +1,11 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) die();
-
 namespace OrionRush\DuplicateDetector\Admin;
 
 // You have to be able to change settings to ride this ride
 if (!current_user_can( "manage_options" )){
     return;
 }
+if ( ! defined( 'ABSPATH' ) ) die();
 
 add_action('admin_menu',  __NAMESPACE__ . '\\add_admin_menu');
 add_action('admin_init',  __NAMESPACE__ . '\\settings_init');
