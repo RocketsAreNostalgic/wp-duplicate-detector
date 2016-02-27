@@ -18,7 +18,6 @@
   /**
    * phpUri
    */
-if (!class_exists('phpUri')){
   class phpUri
   {
 
@@ -207,4 +206,3 @@ if (!class_exists('phpUri')){
       return $uri->to_str();
     }
   }
-}

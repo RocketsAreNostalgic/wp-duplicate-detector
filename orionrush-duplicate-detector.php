@@ -16,8 +16,9 @@ License URI:   http://opensource.org/licenses/MIT
 
 define('DUPLICATE_DETECTOR_SHARE_PATH', plugin_dir_path(__FILE__));
 define('DUPLICATE_DETECTOR_SHARE_FOLDER', __FILE__);
-
-require_once(__DIR__ . '/vendor/phpuri.php');
+if (!class_exists('phpUri')) {
+    require_once(__DIR__ . '/vendor/phpuri.php');
+}
 require_once(__DIR__ . '/lib/admin.php');
 require_once(__DIR__ . '/lib/detector.php');
 
