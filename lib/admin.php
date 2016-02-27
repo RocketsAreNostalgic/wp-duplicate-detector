@@ -1,10 +1,5 @@
 <?php
 namespace OrionRush\DuplicateDetector\Admin;
-
-// You have to be able to change settings to ride this ride
-if (!current_user_can( "manage_options" )){
-    return;
-}
 if ( ! defined( 'ABSPATH' ) ) die();
 
 add_action('admin_menu',  __NAMESPACE__ . '\\add_admin_menu');
@@ -12,6 +7,10 @@ add_action('admin_init',  __NAMESPACE__ . '\\settings_init');
 add_action('wp_enqueue_scripts',  __NAMESPACE__ . '\\assets');
 
 function add_admin_menu() {
+    // You have to be able to change settings to ride this ride
+    if (!current_user_can( "manage_options" )){
+        return;
+    }
   $settings_page = add_options_page('Duplicate Detector', 'Duplicate Detector', 'manage_options', 'orionrush_duplicate_detector',  __NAMESPACE__ . '\\options_page');
   add_action('load-' . $settings_page,  __NAMESPACE__ . '\\load_admin_assets');
 }
