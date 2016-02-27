@@ -1,0 +1,31 @@
+#: lib/admin.php:36
+msgid "General Configuration"
+msgstr ""
+
+#: lib/admin.php:42
+msgid "Enable Buttons"
+msgstr ""
+
+#: lib/admin.php:56
+msgid "Theme Integration"
+msgstr ""
+
+#: lib/admin.php:76
+msgid "Post Types"
+msgstr ""
+
+#: lib/admin.php:245
+msgid "Enabled"
+msgstr ""
+
+#: lib/admin.php:246
+msgid "Disabled"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Orion Rush"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.orionrush.com/"
+msgstr ""
