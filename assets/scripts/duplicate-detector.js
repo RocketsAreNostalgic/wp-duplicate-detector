@@ -6,7 +6,7 @@
  */
 
 jQuery(document).ready(function () {
-  jQuery('#titlediv #title').after('<button type="button" title="Check for duplicate post titles" value="clickme" onclick="jQuery.dupetitles();" class="duplicates button">D</button>');
+  jQuery('#titlediv #title').after('<button type="button" title="' + objectL10n.button_notice + '" value="clickme" onclick="jQuery.dupetitles();" id="duplicates" class="duplicates button">D</button>');
   /*
    * Watches the title input for key up events and triggers a button to prompt the user to check for duplicates
    * Inspired by http://stackoverflow.com/a/6258628
@@ -114,7 +114,7 @@ jQuery(document).ready(function () {
           console.log('title: ' + data.post_title + ' post type: ' + data.post_type + ' post id: ' + data.post_id);
           var response = {
             status: 'error',
-            html: '<div id="duplicate-error" style="color:red;">Sorry we encountered a unexpected error: ' + error + '.</div>'
+            html: '<div id="duplicate-error" style="color:red;">' + objectL10n.error_message + ' ' + error + '.</div>'
           };
           messages(response);
         });
@@ -164,7 +164,7 @@ jQuery(document).ready(function () {
         });
       });
     }
-    if (response.status === 'false') { //Venue title is unique
+    if (response.status === 'false') { //Title is unique
 
       jQuery('#titlediv #title').css({
         'background-image': 'url("/wp-content/plugins/duplicate-detector/assets/imgs/check.gif")',
@@ -181,7 +181,7 @@ jQuery(document).ready(function () {
         'background-position': '99% 50%'
         }).delay(600, function () {
           jQuery('#titlediv .inside').prepend('<div id=\"message\" class=\"error fade duptitles\"><p>' + response.html + '</p></div>').slideDown('slow');
-          //jQuery('#poststuff').prepend('<div id="message" class="error fade"><pre>' + JSON.stringify(response, null, 4) + '</pre></div>'); //debugging
+          //jQuery('#poststuff').prepend('<div id="message" class="error fade duptitles"><pre>' + JSON.stringify(response, null, 4) + '</pre></div>'); //debugging
       });
     }
   }

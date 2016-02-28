@@ -3,17 +3,19 @@ namespace OrionRush\DuplicateDetector\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) die();
 
-add_action('admin_menu',  __NAMESPACE__ . '\\add_admin_menu');
-add_action('admin_init',  __NAMESPACE__ . '\\settings_init');
-add_action('wp_enqueue_scripts',  __NAMESPACE__ . '\\assets');
+if (is_admin()){
+    add_action('admin_menu',  __NAMESPACE__ . '\\add_admin_menu');
+    add_action('admin_init',  __NAMESPACE__ . '\\register_settings_init');
+    add_action('wp_enqueue_scripts',  __NAMESPACE__ . '\\enqueue_admin_assets');
+} else {
+    return;
+}
 
 function add_admin_menu() {
-    // You have to be able to change settings to ride this ride
-    if (!current_user_can( "manage_options" )){
-        return;
+    if(current_user_can( "manage_options" )){ // we cant check for this sooner
+      $settings_page = add_options_page('Duplicate Detector', 'Duplicate Detector', 'manage_options', 'orionrush_duplicate_detector',  __NAMESPACE__ . '\\options_page');
+      add_action('load-' . $settings_page,  __NAMESPACE__ . '\\load_admin_assets');
     }
-  $settings_page = add_options_page('Duplicate Detector', 'Duplicate Detector', 'manage_options', 'orionrush_duplicate_detector',  __NAMESPACE__ . '\\options_page');
-  add_action('load-' . $settings_page,  __NAMESPACE__ . '\\load_admin_assets');
 }
 
 function load_admin_assets() {
@@ -98,8 +100,9 @@ function control_post_types() {
   $key = 'post_types';
   $settings = get_settings();
   $saved = get_setting($key);
-
-  print "\n" . '<fieldset>';
+    $message = __("Select which post types Duplicate Detector should work with.", 'orionrush_duplicate_detector');
+    print "\n" . '<em></em>' . $message . '<br/><br/>';
+    print "\n" . '<fieldset>';
   foreach (get_post_types(array('public' => true)) as $post_type => $label) {
     $id = 'orionrush_duplicate_detector_' . $key . '_' . $post_type;
     $checked = (in_array($post_type, $saved)) ? ' checked="checked"' : '';
@@ -108,5 +111,5 @@ function control_post_types() {
     print "\n" . '<label for="' . esc_attr($id) . '"><input' . $checked . ' id="' . esc_attr($id) . '" type="checkbox" name="orionrush_duplicate_detector[' . $key .'][]" value="' . esc_attr($post_type) . '"> ' . ucwords(esc_html($label)) . '</label><br>';
   }
   print "\n" . '</fieldset>';
-  print "\n" . '<em><br/>Select which built in and custom post types you would like Duplicate Detector to work with.</em>';
+
 }

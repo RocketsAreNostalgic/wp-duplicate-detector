@@ -17,6 +17,11 @@ function integrate_duplicate_detector() {
   if (in_array(get_post_type(), $settings['post_types'])) {
     wp_enqueue_style('orionrush-duplicate-detector', plugins_url('/assets/styles/duplicate-detector.css', DUPLICATE_DETECTOR_SHARE_FOLDER), array());
     wp_enqueue_script('orionrush-duplicate-detector', plugins_url('/assets/scripts/duplicate-detector-min.js', DUPLICATE_DETECTOR_SHARE_FOLDER), array('jquery'), true);
+    wp_localize_script( 'orionrush-duplicate-detector', 'objectL10n', array(
+        'button_notice'  => esc_html__('Check for duplicate post titles.', 'orionrush_duplicate_detector'),
+        'error_message'  => esc_html__('Hey! We received an error:', 'orionrush_duplicate_detector')
+        )
+    );
   }
     return $settings;
 }
@@ -35,6 +40,10 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\integrate_duplicate_detec
  */
 function duplicate_detector_callback()
 {
+    $head_text = __('Whoa there! We found the following entries with a similar heading:');
+    $foot_text = __('The titles listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash.');
+    $confirmation_text = __('This Venue title looks unique!');
+
     global $wpdb;
     $title = $_POST['post_title'];
     $post_id = $_POST['post_id'];
@@ -42,7 +51,7 @@ function duplicate_detector_callback()
     $sim_results = $wpdb->get_results( $wpdb->prepare( $sim_query, $wpdb->esc_like($title), $post_id ) );
     if ($sim_results)
     {
-        $notice = array("head" => "Whoa there! We found the following entries with a similar heading:", "foot" =>"The titles listed above look very similar to this one.  Consider making your title more specific, or perhaps move it to the trash.");
+        $notice = array("head" => $head_text, "foot" =>"$foot_text");
         foreach ($sim_results as $sim_result)
         {
             $details['title'] = get_the_title($sim_result->ID);
@@ -56,7 +65,7 @@ function duplicate_detector_callback()
     }
     else
     {
-        $return_json = array("status" => "false", "notice" => "This Venue title looks unique!");
+        $return_json = array("status" => "false", "notice" => $confirmation_text);
     }
     if( ob_get_length() )
         ob_clean();

@@ -9,6 +9,7 @@ Plugin URI:    https://orionrush.com
 Description:   Add lightweight plugin to help prevent post title duplication.
 Version:       0.0.1
 Author:        orion rush
+Text Domain:   orionrush_duplicate_detector
 Author URI:    https://orionrush.com/
 License:       MIT License
 License URI:   http://opensource.org/licenses/MIT
