@@ -19,15 +19,16 @@ function add_admin_menu() {
 }
 
 function load_admin_assets() {
-  add_action('admin_enqueue_scripts',  __NAMESPACE__ . '\\admin_assets');
+  add_action('admin_enqueue_scripts',  __NAMESPACE__ . '\\enqueue_admin_assets');
 }
 
-function admin_assets(){
+function enqueue_admin_assets(){
+// We currently have no additional style or scripts
 //  wp_enqueue_style('orionrush-duplicate-detector-admin', plugins_url('/assets/styles/admin.css', DUPLICATE_DETECTOR_SHARE_FOLDER), array());
 //  wp_enqueue_script('orionrush-duplicate-detector-admin', plugins_url('/assets/scripts/admin-min.js', DUPLICATE_DETECTOR_SHARE_FOLDER), array('jquery-ui-sortable'));
 }
 
-function settings_init() {
+function register_settings_init() {
   register_setting(
     'orionrush_duplicate_detector',
     'orionrush_duplicate_detector',
