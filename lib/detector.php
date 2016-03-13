@@ -75,6 +75,16 @@ function ajax_callback()
             $details['ID'] =  $sim_result->ID;
             $path = 'post.php?post=' . $sim_result->ID . '&action=edit';
             $details['link'] = esc_url(admin_url($path));
+
+            // If the current user cant edit the post give a link to the public page instead
+            if ( !current_user_can( 'edit_post', $sim_result->ID ) ){
+                $details['link'] = esc_url(get_permalink($sim_result->ID));
+            }
+
+            $details['type'] = get_post_type($sim_result->ID);
+            $author_id = get_post_field('post_author', $sim_result->ID);
+            $author_name = get_the_author_meta( 'display_name', $author_id );
+            $details['title'] = get_the_title($sim_result->ID) . " (" . $details['type'] . " by: " . $author_name . ")";
             $posts[] = $details;
         }
         $return_json = array("status" => "true", "notice" => $notice, "posts"=>$posts );
