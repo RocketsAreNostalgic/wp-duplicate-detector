@@ -47,7 +47,8 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin');
  * @wp-hook:    wp_ajax_title_check
  *
  */
-function duplicate_detector_callback()
+
+function ajax_callback()
 {
     $dupes_found_head_text = __('Whoa there! We found the following entries with a similar heading:');
     $dupes_found_foot_text = __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. </br> Also pay attention to your permalink for good SEO.');
