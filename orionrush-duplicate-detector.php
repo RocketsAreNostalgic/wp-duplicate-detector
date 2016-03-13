@@ -16,6 +16,13 @@ License URI:   http://opensource.org/licenses/MIT
 */
 
 /**
+ * PRO TIP:
+ * When PHP errors screw up ajax requests, you'll see a warning to the effect of:
+ * "Hey! We received an error: SyntaxError: Unexpected token <."
+ * In this case enable WP_DEBUG, and WP_DEBUG_LOG in wp-config.php to record these errors, and show screen and browser console logs to help troubleshoot.
+ * https://codex.wordpress.org/Debugging_in_WordPress
+ */
+
 define('DUPLICATE_DETECTOR_PATH', plugin_dir_path(__FILE__));
 define('DUPLICATE_DETECTOR_FOLDER', __FILE__);
 
@@ -51,3 +58,18 @@ add_action('plugins_loaded', __NAMESPACE__ . '\\load_textdomain');
  * Ajax - this hook must be called in the main plugin file
  * *********************************************************************/
 add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
+
+/***********************************************************************
+ * Simple Logging when WP_DEBUG_LOG == true
+ * *********************************************************************/
+if (!function_exists('write_log')) {
+    function write_log ( $log )  {
+        if ( true === WP_DEBUG_LOG ) {
+            if ( is_array( $log ) || is_object( $log ) ) {
+                error_log( print_r( $log, true ) );
+            } else {
+                error_log( $log );
+            }
+        }
+    }
+}

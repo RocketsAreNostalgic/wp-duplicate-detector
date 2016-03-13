@@ -82,6 +82,10 @@ function ajax_callback()
     {
         $return_json = array("status" => "false", "notice" => $confirmation_text);
     }
+
+    // Log these values if we're debugging
+    \OrionRush\DuplicateDetector\write_log("DD Returned JSON as array:");
+    \OrionRush\DuplicateDetector\write_log($return_json);
     if( ob_get_length() )
         ob_clean();
     header('Content-Type: application/json');
