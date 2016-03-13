@@ -42,9 +42,15 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin');
  * In case PHP errors screw up ajax requests, enable debugging log in wp-config.php to see the error
  * http://wordpress.stackexchange.com/q/184226/13551
  *
+ * @since       0.0.1
+ * @author      orionrush
+ *
  * @uses:       title_check
  * @global:     $wpdb
  * @wp-hook:    wp_ajax_title_check
+ *
+ * @TODO: Add filters for alert text, and footer
+ * @TODO: Add mechanism for adding custom fields values in alerts
  *
  */
 
