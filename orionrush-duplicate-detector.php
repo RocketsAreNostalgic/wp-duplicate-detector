@@ -15,9 +15,7 @@ License:       MIT License
 License URI:   http://opensource.org/licenses/MIT
 */
 
-if (!class_exists('phpUri')) {
-    require_once(__DIR__ . '/vendor/phpuri.php');
-}
+/**
 define('DUPLICATE_DETECTOR_PATH', plugin_dir_path(__FILE__));
 define('DUPLICATE_DETECTOR_FOLDER', __FILE__);
 
