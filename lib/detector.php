@@ -60,7 +60,6 @@ function ajax_callback()
     $dupes_found_foot_text = __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. </br> Also pay attention to your permalink for good SEO.');
     $confirmation_text = __('This Venue title looks unique!');
 
-    global $wpdb;
     $title = $_POST['post_title'];
     $post_id = $_POST['post_id'];
     $sim_query = "SELECT ID FROM $wpdb->posts WHERE post_status = 'publish' AND post_title LIKE '%%%s%%' AND ID != '%d'";
