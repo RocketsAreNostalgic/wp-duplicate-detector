@@ -16,6 +16,29 @@ button#duplicates {
   background-color: #E2DCDC;
 }
 
+.dd_halt {
+  background-image: url("../imgs/halt.gif");
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+}
+.dd_warning {
+  background-image: url("../imgs/warning.gif");
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+}
+.dd_check {
+  background-image: url("../imgs/check.gif");
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+}
+.dd_spinner {
+  //
+  //background-image: url("/wp-admin/images/wpspin_light.gif");
+  background-image: url("../imgs/wpspin_light.gif");
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+}
+
 button#duplicates:hover,
 button#duplicates:active,
 button#duplicates:visited {
@@ -43,6 +66,9 @@ button#duplicates:active{
 @media (min-width: 501px) and (max-width: 1299px) {
   #titlediv #title { width: 92%; }
 }
-@media (max-width: 500px) {
-  #titlediv #title{ width: 90%; }
+@media (min-width: 350px) and (max-width: 500px) {
+  #titlediv #title{ width: 88%; }
+}
+@media (min-width: 300px) and (max-width: 349px) {
+  #titlediv #title{ width: 86%; }
 }

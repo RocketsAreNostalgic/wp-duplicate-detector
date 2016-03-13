@@ -2,31 +2,40 @@
 namespace OrionRush\DuplicateDetector\Enabled;
 
 if ( ! defined( 'ABSPATH' ) ) die();
+if (!is_admin()){ return; }
+
+// Load search term filter an sql query generator
+require_once(__DIR__ . '/search-term-filter.php');
+require_once(__DIR__ . '/sql-query-generator.php');
 
 /**
- * Enqueues styles and scripts to  post types if they have enabled in the admin settings page
+ * Enqueues styles and scripts onto post types if they have been enabled in the admin settings page.
+ *
+ * @since       0.0.1
+ * @author      orionrush
  */
-function integrate_duplicate_detector() {
-  $settings = \OrionRush\DuplicateDetector\Admin\get_settings();
-  if (!is_admin()){
-    return;
-  }
-  if (empty($settings['post_types'])) {
+function enqueue_dd_in_admin() {
+    $settings = \OrionRush\DuplicateDetector\Admin\get_settings();
+    if (empty($settings['post_types'])) {
       return;
-  }
-  if (in_array(get_post_type(), $settings['post_types'])) {
-    wp_enqueue_style('orionrush-duplicate-detector', plugins_url('/assets/styles/duplicate-detector.css', DUPLICATE_DETECTOR_SHARE_FOLDER), array());
-    wp_enqueue_script('orionrush-duplicate-detector', plugins_url('/assets/scripts/duplicate-detector-min.js', DUPLICATE_DETECTOR_SHARE_FOLDER), array('jquery'), true);
-    wp_localize_script( 'orionrush-duplicate-detector', 'objectL10n', array(
-        'button_notice'  => esc_html__('Check for duplicate post titles.', 'orionrush_duplicate_detector'),
-        'error_message'  => esc_html__('Hey! We received an error:', 'orionrush_duplicate_detector')
-        )
-    );
-  }
+    }
+    $dd_debug = 'FALSE';
+    if (WP_DEBUG) {
+        $dd_debug = 'TRUE';
+    }
+    if (in_array(get_post_type(), $settings['post_types'])) {
+        wp_enqueue_style('orionrush-duplicate-detector', plugins_url('/assets/styles/duplicate-detector.css', DUPLICATE_DETECTOR_FOLDER), array());
+        wp_enqueue_script('orionrush-duplicate-detector', plugins_url('/assets/scripts/duplicate-detector-min.js', DUPLICATE_DETECTOR_FOLDER), array('jquery'), true);
+        wp_localize_script( 'orionrush-duplicate-detector', 'object_DD', array(
+            'button_notice'  => esc_html__('Check for duplicate post titles.', 'orionrush_duplicate_detector'),
+            'error_message'  => esc_html__('Hey! We received an error:', 'orionrush_duplicate_detector'),
+            'debug' => $dd_debug
+            )
+        );
+    }
     return $settings;
 }
-add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\integrate_duplicate_detector');
-
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin');
 
 /*
  * Process the ajax request
