@@ -63,10 +63,12 @@ function ajax_callback()
     // Grab details from inbound POST array
     $title = $_POST['post_title'];
     $post_id = $_POST['post_id'];
-    $sim_query = "SELECT ID FROM $wpdb->posts WHERE post_status = 'publish' AND post_title LIKE '%%%s%%' AND ID != '%d'";
-    $sim_results = $wpdb->get_results( $wpdb->prepare( $sim_query, $wpdb->esc_like($title), $post_id ) );
     $post_types = get_post_type($post_id);
 
+    // Get any matches for post title
+    $sim_results =  get_any_matches( $title, $post_id, 'publish', $post_types, '0' );
+
+    // if there are any matches
     if ($sim_results)
     {
         $notice = array("head" => $dupes_found_head_text, "foot" =>"$dupes_found_foot_text");
