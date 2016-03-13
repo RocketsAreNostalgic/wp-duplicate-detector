@@ -60,20 +60,21 @@ function ajax_callback()
     $dupes_found_foot_text = __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. </br> Also pay attention to your permalink for good SEO.');
     $confirmation_text = __('This Venue title looks unique!');
 
+    // Grab details from inbound POST array
     $title = $_POST['post_title'];
     $post_id = $_POST['post_id'];
     $sim_query = "SELECT ID FROM $wpdb->posts WHERE post_status = 'publish' AND post_title LIKE '%%%s%%' AND ID != '%d'";
     $sim_results = $wpdb->get_results( $wpdb->prepare( $sim_query, $wpdb->esc_like($title), $post_id ) );
+    $post_types = get_post_type($post_id);
+
     if ($sim_results)
     {
         $notice = array("head" => $dupes_found_head_text, "foot" =>"$dupes_found_foot_text");
         foreach ($sim_results as $sim_result)
         {
-            $details['title'] = get_the_title($sim_result->ID);
+            $details['ID'] =  $sim_result->ID;
             $path = 'post.php?post=' . $sim_result->ID . '&action=edit';
             $details['link'] = esc_url(admin_url($path));
-            // $details['city'] =  wpcf_api_field_meta_value( 'city', $sim_result->ID );
-            $details['ID'] =  $sim_result->ID;
             $posts[] = $details;
         }
         $return_json = array("status" => "true", "notice" => $notice, "posts"=>$posts );
