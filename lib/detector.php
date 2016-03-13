@@ -97,9 +97,12 @@ function ajax_callback()
     // Log these values if we're debugging
     \OrionRush\DuplicateDetector\write_log("DD Returned JSON as array:");
     \OrionRush\DuplicateDetector\write_log($return_json);
+
     if( ob_get_length() )
+        // Flush buffers to default point
+        // http://wordpress.stackexchange.com/q/184226/13551
+        // http://php.net/manual/en/function.exit.php#101204
         ob_clean();
-    header('Content-Type: application/json');
-    // Flush buffers to default point http://php.net/manual/en/function.exit.php#101204
-    exit(json_encode($return_json));
+        header('Content-Type: application/json');
+        exit(json_encode($return_json));
 }
