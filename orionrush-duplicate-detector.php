@@ -38,4 +38,4 @@ add_action('plugins_loaded', __NAMESPACE__ . '\\load_textdomain');
 /***********************************************************************
  * Ajax - this hook must be called in the main plugin file
  * *********************************************************************/
-add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\duplicate_detector_callback' );
+add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
