@@ -49,8 +49,8 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin');
  */
 function duplicate_detector_callback()
 {
-    $head_text = __('Whoa there! We found the following entries with a similar heading:');
-    $foot_text = __('The titles listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash.');
+    $dupes_found_head_text = __('Whoa there! We found the following entries with a similar heading:');
+    $dupes_found_foot_text = __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. </br> Also pay attention to your permalink for good SEO.');
     $confirmation_text = __('This Venue title looks unique!');
 
     global $wpdb;
@@ -60,7 +60,7 @@ function duplicate_detector_callback()
     $sim_results = $wpdb->get_results( $wpdb->prepare( $sim_query, $wpdb->esc_like($title), $post_id ) );
     if ($sim_results)
     {
-        $notice = array("head" => $head_text, "foot" =>"$foot_text");
+        $notice = array("head" => $dupes_found_head_text, "foot" =>"$dupes_found_foot_text");
         foreach ($sim_results as $sim_result)
         {
             $details['title'] = get_the_title($sim_result->ID);
