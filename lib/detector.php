@@ -19,17 +19,14 @@ function enqueue_dd_in_admin() {
     if (empty($settings['post_types'])) {
       return;
     }
-    $dd_debug = 'FALSE';
-    if (WP_DEBUG) {
-        $dd_debug = 'TRUE';
-    }
+
     if (in_array(get_post_type(), $settings['post_types'])) {
         wp_enqueue_style('orionrush-duplicate-detector', plugins_url('/assets/styles/duplicate-detector.css', DUPLICATE_DETECTOR_FOLDER), array());
         wp_enqueue_script('orionrush-duplicate-detector', plugins_url('/assets/scripts/duplicate-detector-min.js', DUPLICATE_DETECTOR_FOLDER), array('jquery'), true);
         wp_localize_script( 'orionrush-duplicate-detector', 'object_DD', array(
             'button_notice'  => esc_html__('Check for duplicate post titles.', 'orionrush_duplicate_detector'),
             'error_message'  => esc_html__('Hey! We received an error:', 'orionrush_duplicate_detector'),
-            'debug' => $dd_debug
+            'debug' => WP_DEBUG
             )
         );
     }
