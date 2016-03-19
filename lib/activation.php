@@ -1,6 +1,9 @@
 <?php
 namespace OrionRush\DuplicateDetector\Activation;
 
+
+// Add check for PHP version
+
 if ( ! defined( 'ABSPATH' ) ) die();
 
 if (get_option('orionrush_duplicate_detector') === false) {
