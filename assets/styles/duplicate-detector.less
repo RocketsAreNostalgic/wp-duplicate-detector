@@ -1,3 +1,22 @@
+// Keep text from overlapping icons
+#titlewrap input{
+  padding-right: 45px!important;
+}
+
+#titlewrap {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+
+#titlediv #title {
+  width: 93.5%; // prevents button from breaking out on FF, and still be full width on Safari 8
+  flex-shrink: 1;
+  flex-grow: 2;
+  flex-basis: auto;
+}
+
 button#duplicates {
   position: relative;
   top: -1px;
@@ -32,11 +51,10 @@ button#duplicates {
   background-position: 99% 50%;
 }
 .dd_spinner {
-  //
-  //background-image: url("/wp-admin/images/wpspin_light.gif");
-  background-image: url("../imgs/wpspin_light.gif");
+  // The input is locked at this stage, so this is actually done with js as css styles don't work on all browser
+  background-image: url("/wp-admin/images/wpspin_light.gif");
   background-repeat: no-repeat;
-  background-position: 99% 50%;
+  background-position: 97% 50%;
 }
 
 button#duplicates:hover,
@@ -56,19 +74,4 @@ button#duplicates:active{
   border-width: 1px;
   -webkit-box-shadow: 0 0px 0 #ccc;
   box-shadow: 0 0px 0 #ccc;
-}
-
-#titlewrap input{  padding-right: 45px!important; }
-
-@media (min-width: 1300px) {
-  #titlediv #title { width: 95%; }
-}
-@media (min-width: 501px) and (max-width: 1299px) {
-  #titlediv #title { width: 92%; }
-}
-@media (min-width: 350px) and (max-width: 500px) {
-  #titlediv #title{ width: 88%; }
-}
-@media (min-width: 300px) and (max-width: 349px) {
-  #titlediv #title{ width: 86%; }
 }
