@@ -9,7 +9,6 @@
   flex-wrap: nowrap;
 }
 
-
 #titlediv #title {
   width: 93.5%; // prevents button from breaking out on FF, and still be full width on Safari 8
   flex-shrink: 1;
@@ -51,10 +50,12 @@ button#duplicates {
   background-position: 99% 50%;
 }
 .dd_spinner {
-  // The input is locked at this stage, so this is actually done with js as css styles don't work on all browser
-  background-image: url("/wp-admin/images/wpspin_light.gif");
+  // The input is locked by js when this would be activated,
+  // and some browsers wont apply the styles to locked fields
+  // so we will complete this by doing it explicitly within the js
+  background-image: url("../imgs/wpspin_light.gif");
   background-repeat: no-repeat;
-  background-position: 97% 50%;
+  background-position: 98% 50%;
 }
 
 button#duplicates:hover,
