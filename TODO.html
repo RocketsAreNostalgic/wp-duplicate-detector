@@ -13,19 +13,21 @@
 <li>Correct space/tab code style issues</li>
 </ul>
 
+<p>&#8211; We&#8217;ve found that this isn&#8217;t always possible, as some field are locked by js during the ajax cycle, and so styles cannont be applied to them at those times. JS is able however to &#8216;reach in&#8217;, so we&#8217;re sticking to this route for the spinner, especially.</p>
+
 <p><em>For v 0.0.3</em></p>
 
 <ul>
-<li>Added a filter to the error output so that it can be modified</li>
+<li>Add a filter to the error output so that it can be modified</li>
 <li>Add PHP Version check to activation and message on failure</li>
 </ul>
 
 <p><em>For v 0.0.4</em></p>
 
 <ul>
-<li><p>Suspend autosave on all activated post types as an option in admin</p></li>
+<li><p>Consider adding the option to suspend autosave on all activated post types as an option in admin</p></li>
 <li><p>Add option to limit custom post type to searches of its own type only</p></li>
-<li><p>When a post title is found to be a duplicate, it is automatically converted to draft status.</p></li>
+<li><p>When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.</p></li>
 <li><p>Added a visual reminder to update the url slug, and a checkbox to &#8220;do this automatically&#8221;?</p></li>
 </ul>
 
@@ -34,7 +36,7 @@
 <ul>
 <li>Added all strings are included in pot file.</li>
 <li>Rolled the ajax detector function into its own class so that we can extend it.</li>
-<li>Added the ability to extend the error output to include other fields as needed.</li>
+<li>Added the ability to extend the error output to include other fields as needed (add filters).</li>
 </ul>
 
 <p><em>For v 0.0.6</em></p>
