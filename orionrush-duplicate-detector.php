@@ -1,13 +1,15 @@
 <?php
 namespace OrionRush\DuplicateDetector;
 
-if ( ! defined( 'ABSPATH' ) ) die();
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /*
 Plugin Name:   Duplicate Detector
 Plugin URI:    https://orionrush.com
 Description:   Add lightweight plugin to help prevent post title duplication.
-Version:       0.0.2
+Version:       0.0.2.1
 Author:        orion rush
 Text Domain:   orionrush_duplicate_detector
 Author URI:    https://orionrush.com/
