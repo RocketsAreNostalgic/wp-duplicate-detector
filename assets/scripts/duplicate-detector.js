@@ -63,7 +63,7 @@ jQuery(document).ready(function () {
             jQuery('#titlediv #title').css({
               'background-image': 'url("' + imageUrl + '")',
               'background-repeat': 'no-repeat',
-              'background-position': '98% 50%'
+              'background-position': '97% 50%'
             });
 
 
