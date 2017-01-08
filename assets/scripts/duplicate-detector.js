@@ -59,7 +59,7 @@ jQuery(document).ready(function () {
           // Prevent ajax request on empty field
         if (title){
             // add the spinner, cant add spinner via class to disabled field, as bkground is locked?
-            var imageUrl = '../imgs/wpspin_light.gif';
+            var imageUrl = object_DD['plugin_url'] + 'assets/imgs/wpspin_light.gif';
             jQuery('#titlediv #title').css({
               'background-image': 'url("' + imageUrl + '")',
               'background-repeat': 'no-repeat',

@@ -26,7 +26,8 @@ function enqueue_dd_in_admin() {
         wp_localize_script( 'orionrush-duplicate-detector', 'object_DD', array(
             'button_notice'  => esc_html__('Check for duplicate post titles.', 'orionrush_duplicate_detector'),
             'error_message'  => esc_html__('Hey! We received an error:', 'orionrush_duplicate_detector'),
-            'debug' => WP_DEBUG
+            'debug' => WP_DEBUG,
+            'plugin_url' =>  plugin_dir_url( __DIR__ )
             )
         );
     }
