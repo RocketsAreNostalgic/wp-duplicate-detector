@@ -59,12 +59,14 @@ jQuery(document).ready(function () {
           // Prevent ajax request on empty field
         if (title){
             // add the spinner, cant add spinner via class to disabled field, as bkground is locked?
-            var imageUrl = '../../../../../wp-admin/images/wpspin_light.gif';
+            var imageUrl = '/content/plugins/dupliate-detector/assets/imgs/wpspin_light.gif';
             jQuery('#titlediv #title').css({
               'background-image': 'url("' + imageUrl + '")',
               'background-repeat': 'no-repeat',
-              'background-position': '97% 50%'
+              'background-position': '98% 50%'
             });
+
+
             // Lock the input & button
             jQuery('#titlediv #title').addClass('disabled dd_spinner').removeClass('active dd_check dd_warning dd_halt').prop('readonly', true);
             jQuery('button.duplicates').addClass('disabled').prop('disabled', true);
