@@ -5,18 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) die();
 
 /**
  * Check for minimum operating requirements
- *
+ * We've not tested this below WP 4.7
  * @param string $wpv - Minimum WP Version
  * @param string $phpv - Minimum PHP Version
  */
-function activate(  $phpv = "5.5",  $wpv = "4.7" )
+function activate($blah, $phpv = "5.6", $wpv = "4.7")
 {
-    // Do we have to define these as strings for php7?
-    // \OrionRush\DuplicateDetector\write_log($phpv);
-    // \OrionRush\DuplicateDetector\write_log($wpv);
-
-    // We've not tested this below WP 4.7
-
     $flag = null;
     $current = null;
     $target_version = null;
@@ -37,8 +31,6 @@ function activate(  $phpv = "5.5",  $wpv = "4.7" )
     }
 
     if ($flag !== null) {
-
-        require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
         $name = DD_PLUGIN_NAME;
         $format = __('Sorry, <strong>%s</strong> requires %s version %s or greater. <br/> You are currently running version: %s');
