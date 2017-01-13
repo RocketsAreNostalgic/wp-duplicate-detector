@@ -54,9 +54,18 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin');
 
 function ajax_callback()
 {
-    $dupes_found_head_text = __('Whoa there! We found the following entries with a similar heading:');
-    $dupes_found_foot_text = __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. </br> Also pay attention to your permalink for good SEO.');
+    $dupes_found_head_text =  __('Whoa there! We found the following entries with a similar heading:');
+    if (has_filter('dd_dupes_response_head_text')){
+        $dupes_found_head_text = apply_filters('dd_dupes_response_head_text', $dupes_found_head_text);
+    }
+    $dupes_found_foot_text =  __('The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. <br/> Also pay attention to your permalink for good SEO.');
+    if (has_filter('dd_dupes_response_foot_text')){
+        $dupes_found_foot_text = apply_filters( 'dd_dupes_response_foot_text', $dupes_found_foot_text);
+    }
     $confirmation_text = __('This Venue title looks unique!');
+    if (has_filter('dd_response_confirmation_text')) {
+        $confirmation_text = apply_filters( 'dd_response_confirmation_text', $confirmation_text);
+    }
 
     // Grab details from inbound POST array
     $title = $_POST['post_title'];
