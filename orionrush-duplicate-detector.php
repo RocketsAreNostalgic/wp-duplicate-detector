@@ -35,7 +35,7 @@ require_once(__DIR__ . '/lib/detector.php');
 /**
  * Load the activation script
  *
- * @since       0.0.1
+ * @since       0.0.3
  * @author      orionrush
  *
  */
