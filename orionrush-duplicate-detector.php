@@ -1,7 +1,6 @@
 <?php
 namespace OrionRush\DuplicateDetector;
 
-
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -30,7 +29,6 @@ define('DUPLICATE_DETECTOR_FOLDER', __FILE__);
 
 require_once(__DIR__ . '/lib/admin.php');
 require_once(__DIR__ . '/lib/detector.php');
-
 
 /**
  * Load the activation script
@@ -64,14 +62,12 @@ add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
 /***********************************************************************
  * Simple Logging when WP_DEBUG_LOG == true
  * *********************************************************************/
-if (!function_exists('write_log')) {
-    function write_log ( $log )  {
-        if ( true === WP_DEBUG_LOG ) {
-            if ( is_array( $log ) || is_object( $log ) ) {
-                error_log( print_r( $log, true ) );
-            } else {
-                error_log( $log );
-            }
+function write_log ( $log )  {
+    if ( true === WP_DEBUG_LOG ) {
+        if ( is_array( $log ) || is_object( $log ) ) {
+            error_log( print_r( $log, true ) );
+        } else {
+            error_log( $log );
         }
     }
 }
