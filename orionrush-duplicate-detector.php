@@ -28,6 +28,7 @@ define('DD_PATH', plugin_dir_path(__FILE__));
 define('DD_DIR', __FILE__);
 define('DD_PLUGIN_NAME', "Duplicate Detector");
 
+require_once(__DIR__ . '/lib/activation.php');
 require_once(__DIR__ . '/lib/admin.php');
 require_once(__DIR__ . '/lib/detector.php');
 
@@ -38,10 +39,7 @@ require_once(__DIR__ . '/lib/detector.php');
  * @author      orionrush
  *
  */
-function activation() {
-    require_once(DUPLICATE_DETECTOR_PATH . 'lib/activation.php');
-}
-register_activation_hook(__FILE__, __NAMESPACE__ . '\\activation');
+register_activation_hook(__FILE__, __NAMESPACE__ . '\\Activation\\activate');
 
 /**
  * Load Text Domain for translation
