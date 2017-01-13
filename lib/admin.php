@@ -25,8 +25,8 @@ function load_admin_assets() {
 
 function enqueue_admin_assets() {
 	// We currently have no additional style or scripts
-	//  wp_enqueue_style('orionrush-duplicate-detector-admin', plugins_url('/assets/styles/admin.css', DUPLICATE_DETECTOR_FOLDER), array());
-	//  wp_enqueue_script('orionrush-duplicate-detector-admin', plugins_url('/assets/scripts/admin-min.js', DUPLICATE_DETECTOR_FOLDER), array('jquery-ui-sortable'));
+	//  wp_enqueue_style('orionrush-duplicate-detector-admin', plugins_url('/assets/styles/admin.css', DD_DIR), array());
+	//  wp_enqueue_script('orionrush-duplicate-detector-admin', plugins_url('/assets/scripts/admin-min.js', DD_DIR), array('jquery-ui-sortable'));
 }
 
 function register_settings_init() {
@@ -115,5 +115,4 @@ function control_post_types() {
 		print "\n" . '<label for="' . esc_attr( $id ) . '"><input' . $checked . ' id="' . esc_attr( $id ) . '" type="checkbox" name="orionrush_duplicate_detector[' . $key . '][]" value="' . esc_attr( $post_type ) . '"> ' . ucwords( esc_html( $label ) ) . '</label><br>';
 	}
 	print "\n" . '</fieldset>';
-
 }
