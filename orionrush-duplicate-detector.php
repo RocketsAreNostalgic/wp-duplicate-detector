@@ -23,9 +23,10 @@ License URI:   http://opensource.org/licenses/MIT
  * In this case enable WP_DEBUG, and WP_DEBUG_LOG in wp-config.php to record these errors, and show screen and browser console logs to help troubleshoot.
  * https://codex.wordpress.org/Debugging_in_WordPress
  */
-
-define('DUPLICATE_DETECTOR_PATH', plugin_dir_path(__FILE__));
-define('DUPLICATE_DETECTOR_FOLDER', __FILE__);
+define('DD_PLUGIN', __FILE__ ); // The location of this plugin
+define('DD_PATH', plugin_dir_path(__FILE__));
+define('DD_DIR', __FILE__);
+define('DD_PLUGIN_NAME', "Duplicate Detector");
 
 require_once(__DIR__ . '/lib/admin.php');
 require_once(__DIR__ . '/lib/detector.php');
