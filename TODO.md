@@ -3,15 +3,13 @@
 _For v 0.0.2_
  
 * Move jQuery title input filed background icon declarations into css rules, so that we are simply changing class attributes, and not declaring full paths to icon gifs.
-* Correct space/tab code style issues
-
--- We've found that this isn't always possible, as some field are locked by js during the ajax cycle, and so styles cannont be applied to them at those times. JS is able however to 'reach in', so we're sticking to this route for the spinner, especially.
+-- We've found that this isn't always possible, as some field are locked by js during the ajax cycle, and so styles cannot be applied to them at those times. JS is able however to 'reach in', so we're sticking to this route for the spinner, especially.
 
 
 _For v 0.0.3_
 
-* Add a filter to the error output so that it can be modified
-* Add PHP Version check to activation and message on failure
+* Add a filter to the responses they can be modified
+* Add Activation hook for PHP Version check to activation and message on failure
 
 _For v 0.0.4_
 
@@ -21,7 +19,9 @@ _For v 0.0.4_
 * When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.
 * Added a visual reminder to update the url slug, and a checkbox to "do this automatically"?
 
-
+* Consider how to handel very short queries 
+* https://wordpress.org/support/topic/causing-huge-mysql-queries/
+* Correct space/tab code style issues
 _For v 0.0.5_
 
 * Added all strings are included in pot file.
