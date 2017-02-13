@@ -38,9 +38,9 @@ function activate($blah, $phpv = "5.6", $wpv = "4.7")
         wp_die(sprintf($format, $name, $flag, $target_version, $current_version), 'Plugin Activation Error', array('response' => 500, 'back_link' => TRUE));
         deactivate_plugins( plugin_basename(DD_PLUGIN) );
     }
-    else if (get_option('orionrush_duplicate_detector') === false)
+    else if (get_option('dupdetect') === false)
     {
-        add_option('orionrush_duplicate_detector', \OrionRush\DuplicateDetector\Admin\get_defaults());
+        add_option('dupdetect', \OrionRush\DuplicateDetector\Admin\get_defaults());
     }
     return;
 }

@@ -104,7 +104,7 @@ function control_post_types() {
 	$key      = 'post_types';
 	$settings = get_settings();
 	$saved    = get_setting( $key );
-	$message  = __( "Select which post types Duplicate Detector should work with.", 'orionrush_duplicate_detector' );
+	$message  = __( "Select which post types Duplicate Detector should work with.", 'dupdetect' );
 	print "\n" . '<em></em>' . $message . '<br/><br/>';
 	print "\n" . '<fieldset>';
 	foreach ( get_post_types( array( 'public' => true ) ) as $post_type => $label ) {
