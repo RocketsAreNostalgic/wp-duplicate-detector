@@ -15,14 +15,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  * License URI:   https://wordpress.org/about/gpl/
  * Text Domain:   orionrush_duplicate_detector
  */
-define('DD_PLUGIN', __FILE__ ); // The location of this plugin
-define('DD_PATH', plugin_dir_path(__FILE__));
-define('DD_DIR', __FILE__);
-define('DD_PLUGIN_NAME', "Duplicate Detector");
 
-require_once(__DIR__ . '/lib/activation.php');
-require_once(__DIR__ . '/lib/admin.php');
-require_once(__DIR__ . '/lib/detector.php');
+
+/***********************************************************************
+ * Definitions
+ * /********************************************************************/
+define( 'DD_PLUGIN', __FILE__ ); // The location of this plugin
+define( 'DD_PATH', plugin_dir_path( __FILE__ ) );
+define( 'DD_DIR', __FILE__ );
+define( 'DD_PLUGIN_NAME', "Duplicate Detector" );
+
+/***********************************************************************
+ * Includes
+ * /********************************************************************/
+require_once( __DIR__ . '/lib/activation.php' );
+require_once( __DIR__ . '/lib/admin.php' );
+require_once( __DIR__ . '/lib/detector.php' );
+require_once( __DIR__ . '/lib/helpers.php' );
 
 /**
  * Load the activation script
