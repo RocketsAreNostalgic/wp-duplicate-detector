@@ -40,7 +40,7 @@ require_once( __DIR__ . '/lib/helpers.php' );
  * @author      orionrush
  *
  */
-register_activation_hook(__FILE__, __NAMESPACE__ . '\\Activation\\activate');
+register_activation_hook( __FILE__, __NAMESPACE__ . '\\Activation\\activate' );
 
 /**
  * Load Text Domain for translation
@@ -50,17 +50,13 @@ register_activation_hook(__FILE__, __NAMESPACE__ . '\\Activation\\activate');
  *e
  */
 function load_textdomain() {
-    load_plugin_textdomain('duplicate_detector', false, dirname(plugin_basename(__FILE__)) . '/lang');
+	load_plugin_textdomain( 'orionrush_duplicate_detector', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 }
-add_action('plugins_loaded', __NAMESPACE__ . '\\load_textdomain');
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\load_textdomain' );
 
 /***********************************************************************
- * Ajax - this hook must be called in the main plugin file
- * *********************************************************************/
-add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
-
-/***********************************************************************
- * Simple Logging when WP_DEBUG_LOG == true
+ * Ajax hook, must be called from main plugin file
  * *********************************************************************/
 function write_log ( $log )  {
     if ( true === WP_DEBUG_LOG ) {
@@ -71,3 +67,4 @@ function write_log ( $log )  {
         }
     }
 }
+add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
