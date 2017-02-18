@@ -31,6 +31,7 @@ define( 'DD_PLUGIN_NAME', "Duplicate Detector" );
 require_once( __DIR__ . '/lib/activation.php' );
 require_once( __DIR__ . '/lib/admin.php' );
 require_once( __DIR__ . '/lib/detector.php' );
+require_once( __DIR__ . '/lib/helpers.php' );
 
 /**
  * Load the activation script
