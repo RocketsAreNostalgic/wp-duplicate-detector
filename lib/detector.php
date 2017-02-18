@@ -62,6 +62,7 @@ function ajax_callback() {
 		 * Filter the dupes found response, head notice.
 		 *
 		 * @since    0.0.3
+		 *
 		 * @param string $dupes_found_head_notice
 		 */
 		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_notice );
@@ -73,6 +74,7 @@ function ajax_callback() {
 		 * Filter the dupes found response, head text.
 		 *
 		 * @since    0.0.3
+		 *
 		 * @param string $dupes_found_foot_text
 		 */
 		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_text );
@@ -84,6 +86,7 @@ function ajax_callback() {
 		 * Filter the dupes found response, footer text.
 		 *
 		 * @since    0.0.3
+		 *
 		 * @param string $dupes_found_foot_text
 		 */
 		$dupes_found_foot_text = apply_filters( 'dd_dupes_response_foot_text', $dupes_found_foot_text );
@@ -95,6 +98,7 @@ function ajax_callback() {
 		 * Filter the confirmation text.
 		 *
 		 * @since    0.0.3
+		 *
 		 * @param string $confirmation_text
 		 */
 		$confirmation_text = apply_filters( 'dd_response_confirmation_text', $confirmation_text );
@@ -106,6 +110,7 @@ function ajax_callback() {
 		 * Filter the confirmation text.
 		 *
 		 * @since    0.0.3
+		 *
 		 * @param string $too_short_text
 		 */
 		$too_short_text = apply_filters( 'dd_response_too_sort_text', $too_short_text );
@@ -116,9 +121,9 @@ function ajax_callback() {
 	$post_id   = $_POST['post_id'];
 	$post_type = get_post_type( $post_id );
 
-	$too_short = strlen($title)<= 3;
+	$too_short = strlen( $title ) <= 3;
 
-	if (!$too_short) {
+	if ( ! $too_short ) {
 
 		// Test to see if current post type should be isolated from the others during search.
 		$options_array = get_option( 'orionrush_duplicate_detector' );
@@ -177,6 +182,7 @@ function ajax_callback() {
 		 * Filter the json response.
 		 *
 		 * @since    0.0.4
+		 *
 		 * @param string $return_json
 		 */
 		$return_json = apply_filters( 'dd_response_return_json', $return_json );

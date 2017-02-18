@@ -2,14 +2,14 @@
 
 _For v 0.0.2_
  
-* Move jQuery title input filed background icon declarations into css rules, so that we are simply changing class attributes, and not declaring full paths to icon gifs.
+* [DONE] Move jQuery title input filed background icon declarations into css rules, so that we are simply changing class attributes, and not declaring full paths to icon gifs.
 -- We've found that this isn't always possible, as some field are locked by js during the ajax cycle, and so styles cannot be applied to them at those times. JS is able however to 'reach in', so we're sticking to this route for the spinner, especially.
 
 
 _For v 0.0.3_
 
-* Add a filter to the responses they can be modified
-* Add Activation hook for PHP Version check to activation and message on failure
+* [DONE] Add a filter to the responses they can be modified
+* [DONE] Add Activation hook for PHP Version check to activation and message on failure
 
 _For v 0.0.4_
 
@@ -28,12 +28,13 @@ _For v 0.0.4_
 
 * [WONT_IMPLEMENT] Consider adding the option to suspend autosave on all activated post types as an option in admin
 
+* [DONE] Added the ability to extend the error output to include other fields as needed (add filters).
+
 
 _For v 0.0.5_
 
 * Added all strings are included in pot file.
-* Rolled the ajax detector function into its own class so that we can extend it. 
-* Added the ability to extend the error output to include other fields as needed (add filters).
+* Roll ajax detector function into its own class so that we can extend it. 
 
 _For v 0.0.6_
  - ?

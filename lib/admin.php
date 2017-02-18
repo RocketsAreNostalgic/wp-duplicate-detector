@@ -212,8 +212,8 @@ function settings_sanitize( $input ) {
 		}
 	}
 
-	\OrionRush\DuplicateDetector\Helpers\write_log('sanitized plugin options array:');
-	\OrionRush\DuplicateDetector\Helpers\write_log($output);
+	\OrionRush\DuplicateDetector\Helpers\write_log( 'sanitized plugin options array:' );
+	\OrionRush\DuplicateDetector\Helpers\write_log( $output );
 
 	return $output;
 }
