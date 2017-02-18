@@ -13,15 +13,21 @@ _For v 0.0.3_
 
 _For v 0.0.4_
 
-* Consider adding the option to suspend autosave on all activated post types as an option in admin
-* Add option to limit custom post type to searches of its own type only
-
-* When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.
-* Added a visual reminder to update the url slug, and a checkbox to "do this automatically"?
-
 * Consider how to handel very short queries 
 * https://wordpress.org/support/topic/causing-huge-mysql-queries/
-* Correct space/tab code style issues
+* Handel in user side JS, whith an aleart abut very short queries (less then 3 char?) and reveals a 'force search' button in the notice.
+
+* Correct space/tab code style issues.
+
+* Add option in admin to limit searches in a custom post type to its own type (What is the use case for this?, not sure its really needed).
+
+* [DONE] Add a reminder to update the url slug in the response?
+
+* [WONT_IMPLEMENT] When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.
+
+* [WONT_IMPLEMENT] Consider adding the option to suspend autosave on all activated post types as an option in admin
+
+
 _For v 0.0.5_
 
 * Added all strings are included in pot file.
