@@ -151,7 +151,7 @@ jQuery(document).ready(function () {
           //error message formatting
           var message;
           message = '<div id="duplicate-warning"><h3>' + response.notice.head_notice + '</h3>';
-          message += '<p>' + response.notice.head_text + '</p>';
+          message += '<p><strong>' + response.notice.head_text + '</strong></p>';
           message += '<ul>';
           var sim_results = response.posts;
           for (var i = 0; i < sim_results.length; i++) {
@@ -162,14 +162,26 @@ jQuery(document).ready(function () {
 
           // we found duplicates, here they are
           message += '</ul><p>' + response.notice.foot + '</p></div>';
-          jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-warning fade duptitles\"><p>' + message + '</p></div>').slideDown('slow', function(){
+          jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-error fade duptitles\"><p>' + message + '</p></div>').slideDown('slow', function(){
               jQuery('#titlediv #title').removeClass('dd_spinner dd_warning dd_check').addClass("dd_halt");
           });
+        }
+        if (response.status === 'too-short') {
+            //error message formatting
+            var message;
+            // console.log(response.notice);
+            message = '<p><strong>' + response.notice + '</strong></p>';
+
+            // we found duplicates, here they are
+            message += '</p></div>';
+            jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-warning fade duptitles\"><p>' + message + '</p></div>').slideDown('slow', function(){
+                jQuery('#titlediv #title').removeClass('dd_spinner dd_warning dd_check').addClass("dd_warning");
+            });
         }
         if (response.status === 'false') { //Title is unique
             jQuery('#titlediv #title').removeClass('dd_spinner dd_warning dd_halt').addClass("dd_check");
             if ( object_DD.debug ){
-                jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-success fade duptitles\"><p>' + response.notice + '</p></div>').slideDown('slow');
+                jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-success fade duptitles\"><p><strong>' + response.notice + '</strong></p></div>').slideDown('slow');
             }
         }
         else if (response.status === 'error' || response.status === 'undefined') { // oops we found an error
