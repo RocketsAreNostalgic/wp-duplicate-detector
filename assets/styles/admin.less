@@ -1,17 +1,30 @@
-//@import url('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css');
-//
-//.ui-sort {
-//  width: 20em;
-//}
-//.ui-sort li {
-//  position: relative;
-//  margin: 0 3px 3px 3px;
-//  padding: 4px 3px 2px 8px;
-//  height: 18px;
-//  cursor: move;
-//}
-//.ui-sort li span {
-//  position: absolute;
-//  right: 0;
-//  margin-right: 6px;
-//}
+.flex-grid {
+	display: flex;
+}
+
+.col {
+	flex: 1;
+	padding-left: 10px;
+}
+.col:first-of-type{
+	padding-left: 12%;
+}
+.flex-thirds {
+	width: 15%;
+	justify-content: space-between;
+	display: flex;
+	/* padding-left: 5%; */
+	/* margin-left: 22%; */
+}
+
+input[type="checkbox"].flex-thirds {
+	margin-right: 15px;
+}
+
+
+@media screen and (max-width: 782px) {
+	.flex-thirds {
+		width: 80px;
+	}
+
+}
