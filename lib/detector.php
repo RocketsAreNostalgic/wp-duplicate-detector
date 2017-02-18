@@ -40,15 +40,6 @@ function enqueue_dd_in_admin() {
 
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin' );
 
-
-/**
- * PRO TIP:
- * When PHP errors screw up ajax requests, you'll see a warning to the effect of:
- * "Hey! We received an error: SyntaxError: Unexpected token <."
- * In this case enable WP_DEBUG, and WP_DEBUG_LOG in wp-config.php to record these errors, and show screen and browser console logs to help troubleshoot.
- * https://codex.wordpress.org/Debugging_in_WordPress
- */
-
 /*
  * Process the ajax request
  * In case PHP errors screw up ajax requests, enable debugging log in wp-config.php to see the error
