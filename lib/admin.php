@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( is_admin() ) {
 	add_action( 'admin_menu', __NAMESPACE__ . '\\add_admin_menu' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\register_settings_init' );
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_admin_assets' );
+	//add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_admin_assets' ); // redundant? also called by admin_enqueue_scripts
 } else {
 	return;
 }
