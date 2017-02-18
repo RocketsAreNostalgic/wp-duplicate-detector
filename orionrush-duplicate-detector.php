@@ -31,7 +31,6 @@ define( 'DD_PLUGIN_NAME', "Duplicate Detector" );
 require_once( __DIR__ . '/lib/activation.php' );
 require_once( __DIR__ . '/lib/admin.php' );
 require_once( __DIR__ . '/lib/detector.php' );
-require_once( __DIR__ . '/lib/helpers.php' );
 
 /**
  * Load the activation script
@@ -58,13 +57,4 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\\load_textdomain' );
 /***********************************************************************
  * Ajax hook, must be called from main plugin file
  * *********************************************************************/
-function write_log ( $log )  {
-    if ( true === WP_DEBUG_LOG ) {
-        if ( is_array( $log ) || is_object( $log ) ) {
-            error_log( print_r( $log, true ) );
-        } else {
-            error_log( $log );
-        }
-    }
-}
 add_action( 'wp_ajax_title_check', __NAMESPACE__ . '\\Enabled\ajax_callback' );
