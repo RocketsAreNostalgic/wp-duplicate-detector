@@ -52,23 +52,17 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin' );
  * @global:     $wpdb
  * @wp-hook:    wp_ajax_title_check
  *
- * @TODO: Add filters for alert text, and footer
  * @TODO: Add mechanism for adding custom fields values in alerts
  *
  */
 
 function ajax_callback() {
-	$dupes_found_head_notice = __( 'Whoa there!', 'orionrush_duplicate_detector' );
-	if ( has_filter( 'dd_dupes_response_head_notice' ) ) {
-		$dupes_found_head_notice = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_notice );
-	}
-
-	$dupes_found_head_text = __( 'We found the following titles:', 'orionrush_duplicate_detector' );
+	$dupes_found_head_text = __( 'Whoa there! We found the following entries with a similar heading:', 'dupdetect' );
 	if ( has_filter( 'dd_dupes_response_head_text' ) ) {
 		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_text );
 	}
 
-	$dupes_found_foot_text = sprintf( __( 'Consider making this title a bit more unique. %s %sAlso consider your permalink below for good SEO.%s', 'dupdetect' ), '<br/>', '<em>', '</em>' );
+	$dupes_found_foot_text = sprintf( __( 'The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. %s Also pay attention to your permalink for good SEO.', 'dupdetect' ), '<br/>' );
 	if ( has_filter( 'dd_dupes_response_foot_text' ) ) {
 		$dupes_found_foot_text = apply_filters( 'dd_dupes_response_foot_text', $dupes_found_foot_text );
 	}
