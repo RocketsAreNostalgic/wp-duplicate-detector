@@ -123,7 +123,7 @@ jQuery(document).ready(function () {
                 }
                 var response = {
                 status: 'error',
-                html: '<div id="duplicate-error" style="color:red;">' + object_DD.error_message + ' ' + error + '.</div>'
+                html: '<div id="duplicate-error">' + object_DD.error_message + ' ' + error + '.</div>'
               };
               messages(response);
             });
@@ -150,7 +150,8 @@ jQuery(document).ready(function () {
         if (response.status === 'true') {
           //error message formatting
           var message;
-          message = '<div id="duplicate-warning"><h3 style="padding-left: 0; color:red">' + response.notice.head + '</h3>';
+          message = '<div id="duplicate-warning"><h3>' + response.notice.head_notice + '</h3>';
+          message += '<p>' + response.notice.head_text + '</p>';
           message += '<ul>';
           var sim_results = response.posts;
           for (var i = 0; i < sim_results.length; i++) {
@@ -160,7 +161,7 @@ jQuery(document).ready(function () {
           }
 
           // we found duplicates, here they are
-          message += '<p>' + response.notice.foot + '</p></ul></div>';
+          message += '</ul><p>' + response.notice.foot + '</p></div>';
           jQuery('#titlediv .inside').prepend('<div id=\"dd-message\" class=\"notice notice-warning fade duptitles\"><p>' + message + '</p></div>').slideDown('slow', function(){
               jQuery('#titlediv #title').removeClass('dd_spinner dd_warning dd_check').addClass("dd_halt");
           });
