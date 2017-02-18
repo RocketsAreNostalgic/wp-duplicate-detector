@@ -1,7 +1,8 @@
 <?php
 namespace OrionRush\DuplicateDetector\Activation;
-
-if ( ! defined( 'ABSPATH' ) ) die();
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
 
 /**
  * Check for minimum operating requirements

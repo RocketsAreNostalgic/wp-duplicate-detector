@@ -1,6 +1,5 @@
 <?php
 namespace OrionRush\DuplicateDetector\Enabled;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }

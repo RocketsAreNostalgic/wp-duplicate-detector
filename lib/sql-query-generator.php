@@ -1,8 +1,11 @@
 <?php
 namespace OrionRush\DuplicateDetector\Enabled;
-
-if ( ! defined( 'ABSPATH' ) ) die();
-if (!is_admin()){ return; }
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
+if ( ! is_admin() ) {
+	return;
+}
 
 /**
  * Returns the prepared sql query

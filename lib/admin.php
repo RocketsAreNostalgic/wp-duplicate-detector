@@ -1,8 +1,8 @@
 <?php
 namespace OrionRush\DuplicateDetector\Admin;
-
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {	exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
 
 if ( is_admin() ) {
 	add_action( 'admin_menu', __NAMESPACE__ . '\\add_admin_menu' );

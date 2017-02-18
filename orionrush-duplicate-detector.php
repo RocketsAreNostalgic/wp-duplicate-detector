@@ -15,6 +15,9 @@ Author URI:    https://orionrush.com/
 License:       MIT License
 License URI:   http://opensource.org/licenses/MIT
 */
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
 
 /**
  * PRO TIP:

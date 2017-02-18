@@ -1,8 +1,12 @@
 <?php
 namespace OrionRush\DuplicateDetector\Enabled;
 
-if ( ! defined( 'ABSPATH' ) ) die();
-if (!is_admin()){ return; }
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
+if ( ! is_admin() ) {
+	return;
+}
 
 /**
  * Returns an array with the cleaned-up search string at the zero index and a list of terms in the first.
