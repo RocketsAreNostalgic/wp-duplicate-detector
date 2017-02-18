@@ -89,7 +89,7 @@ function ajax_callback() {
 		$dupes_found_foot_text = apply_filters( 'dd_dupes_response_foot_text', $dupes_found_foot_text );
 	}
 
-	$confirmation_text = __( 'This title looks unique!', 'dupdetect' );
+	$confirmation_text = __( 'This title looks unique!', 'orionrush_duplicate_detector' );
 	if ( has_filter( 'dd_response_confirmation_text' ) ) {
 		/**
 		 * Filter the confirmation text.
@@ -100,56 +100,76 @@ function ajax_callback() {
 		$confirmation_text = apply_filters( 'dd_response_confirmation_text', $confirmation_text );
 	}
 
+	$too_short_text = __( 'For performance reasons, this title is really too short for us to search for.', 'orionrush_duplicate_detector' );
+	if ( has_filter( 'dd_response_too_sort_text' ) ) {
+		/**
+		 * Filter the confirmation text.
+		 *
+		 * @since    0.0.3
+		 * @param string $too_short_text
+		 */
+		$too_short_text = apply_filters( 'dd_response_too_sort_text', $too_short_text );
+	}
+
 	// Grab details from inbound POST array
 	$title     = $_POST['post_title'];
 	$post_id   = $_POST['post_id'];
 	$post_type = get_post_type( $post_id );
 
-	$options_array = get_option( 'orionrush_duplicate_detector' );
+	$too_short = strlen($title)<= 3;
 
-	// Test to see if current post type should be isolated.
-	if ( in_array( $post_type, $options_array['post_types_isolate'] ) ) {
-		$post_types = $post_type;
-	} else {
+	if (!$too_short) {
 
-		$post_types_array = array_diff( $options_array['post_types'], $options_array['post_types_isolate'] );
+		// Test to see if current post type should be isolated from the others during search.
+		$options_array = get_option( 'orionrush_duplicate_detector' );
+		if ( in_array( $post_type, $options_array['post_types_isolate'] ) ) {
+			$post_types = $post_type;
+		} else {
 
-		// Expects a space separated list...
-		$post_types = (string) implode( ' ', $post_types_array );
+			$post_types_array = array_diff( $options_array['post_types'], $options_array['post_types_isolate'] );
 
-		\OrionRush\DuplicateDetector\Helpers\write_log( 'DD callback, post-types being searched:' );
-		\OrionRush\DuplicateDetector\Helpers\write_log( $post_types );
-	}
+			// Expects a space separated list...
+			$post_types = (string) implode( ' ', $post_types_array );
 
-	// Get any matches for post title
-	$sim_results = get_any_matches( $title, $post_id, 'publish', $post_types, '0' );
-
-	// if there are any matches
-	if ( $sim_results ) {
-		$notice = array(
-			"head_notice" => $dupes_found_head_notice,
-			"head_text"   => $dupes_found_head_text,
-			"foot"        => "$dupes_found_foot_text"
-		);
-		foreach ( $sim_results as $sim_result ) {
-			$details['ID']   = $sim_result->ID;
-			$path            = 'post.php?post=' . $sim_result->ID . '&action=edit';
-			$details['link'] = esc_url( admin_url( $path ) );
-
-			// If the current user cant edit the post give a link to the public page instead
-			if ( ! current_user_can( 'edit_post', $sim_result->ID ) ) {
-				$details['link'] = esc_url( get_permalink( $sim_result->ID ) );
-			}
-
-			$details['type']  = get_post_type( $sim_result->ID );
-			$author_id        = get_post_field( 'post_author', $sim_result->ID );
-			$author_name      = get_the_author_meta( 'display_name', $author_id );
-			$details['title'] = get_the_title( $sim_result->ID ) . " (" . $details['type'] . " by: " . $author_name . ")";
-			$posts[]          = $details;
+			\OrionRush\DuplicateDetector\Helpers\write_log( 'DD callback, post-types being searched:' );
+			\OrionRush\DuplicateDetector\Helpers\write_log( $post_types );
 		}
-		$return_json = array( "status" => "true", "notice" => $notice, "posts" => $posts );
+
+		// Get any matches for post title
+		$sim_results = get_any_matches( $title, $post_id, 'publish', $post_types, '0' );
+
+		// if there are any matches
+		if ( $sim_results ) {
+			$notice = array(
+				"head_notice" => $dupes_found_head_notice,
+				"head_text"   => $dupes_found_head_text,
+				"foot"        => "$dupes_found_foot_text"
+			);
+			foreach ( $sim_results as $sim_result ) {
+				$details['ID']   = $sim_result->ID;
+				$path            = 'post.php?post=' . $sim_result->ID . '&action=edit';
+				$details['link'] = esc_url( admin_url( $path ) );
+
+				// If the current user cant edit the post give a link to the public page instead
+				if ( ! current_user_can( 'edit_post', $sim_result->ID ) ) {
+					$details['link'] = esc_url( get_permalink( $sim_result->ID ) );
+				}
+
+				$details['type']  = get_post_type( $sim_result->ID );
+				$author_id        = get_post_field( 'post_author', $sim_result->ID );
+				$author_name      = get_the_author_meta( 'display_name', $author_id );
+				$details['title'] = get_the_title( $sim_result->ID ) . " (" . $details['type'] . " by: " . $author_name . ")";
+				$posts[]          = $details;
+			}
+			// Found duplicates
+			$return_json = array( "status" => "true", "notice" => $notice, "posts" => $posts );
+		} else {
+			// No duplicates - yay!
+			$return_json = array( "status" => "false", "notice" => $confirmation_text );
+		}
 	} else {
-		$return_json = array( "status" => "false", "notice" => $confirmation_text );
+		// Too short
+		$return_json = array( "status" => "too-short", "notice" => $too_short_text );
 	}
 
 	if ( has_filter( 'dd_response_return_json' ) ) {
