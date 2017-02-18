@@ -13,13 +13,14 @@ _For v 0.0.3_
 
 _For v 0.0.4_
 
-* Consider how to handel very short queries 
-* https://wordpress.org/support/topic/causing-huge-mysql-queries/
-* Handel in user side JS, whith an aleart abut very short queries (less then 3 char?) and reveals a 'force search' button in the notice.
+* [DONE]  Consider how to handel very short queries 
+* - https://wordpress.org/support/topic/causing-huge-mysql-queries/
+* - Handel very short queries - on user side JS?, with an alert abut very short queries (less then 3 char?) and reveals a 'force search' button in the notice?
+* - Nope, we just did it with a text in the php, and a truncated response prior to the actual query. Not as preferment but pretty quick to implement.  
 
-* Correct space/tab code style issues.
+* [DONE] Correct space/tab code style issues.
 
-* Add option in admin to limit searches in a custom post type to its own type (What is the use case for this?, not sure its really needed).
+* [DONE] Add option in admin to limit searches in a custom post type to its own type (What is the use case for this?, not sure its really needed).
 
 * [DONE] Add a reminder to update the url slug in the response?
 
@@ -35,3 +36,4 @@ _For v 0.0.5_
 * Added the ability to extend the error output to include other fields as needed (add filters).
 
 _For v 0.0.6_
+ - ?

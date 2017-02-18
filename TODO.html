@@ -23,11 +23,18 @@
 <p><em>For v 0.0.4</em></p>
 
 <ul>
-<li><p>Consider how to handel very short queries </p></li>
-<li><p>https://wordpress.org/support/topic/causing-huge-mysql-queries/</p></li>
-<li><p>Handel in user side JS, whith an aleart abut very short queries (less then 3 char?) and reveals a &#8216;force search&#8217; button in the notice.</p></li>
-<li><p>Correct space/tab code style issues.</p></li>
-<li><p>Add option in admin to limit searches in a custom post type to its own type (What is the use case for this?, not sure its really needed).</p></li>
+<li><p>[DONE] Consider how to handel very short queries </p></li>
+<li><ul>
+<li>https://wordpress.org/support/topic/causing-huge-mysql-queries/</li>
+</ul></li>
+<li><ul>
+<li>Handel very short queries - on user side JS?, with an alert abut very short queries (less then 3 char?) and reveals a &#8216;force search&#8217; button in the notice?</li>
+</ul></li>
+<li><ul>
+<li>Nope, we just did it with a text in the php, and a truncated response prior to the actual query. Not as preferment but pretty quick to implement.</li>
+</ul></li>
+<li><p>[DONE] Correct space/tab code style issues.</p></li>
+<li><p>[DONE] Add option in admin to limit searches in a custom post type to its own type (What is the use case for this?, not sure its really needed).</p></li>
 <li><p>[DONE] Add a reminder to update the url slug in the response?</p></li>
 <li><p>[WONT_IMPLEMENT] When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.</p></li>
 <li><p>[WONT_IMPLEMENT] Consider adding the option to suspend autosave on all activated post types as an option in admin</p></li>
@@ -41,7 +48,8 @@
 <li>Added the ability to extend the error output to include other fields as needed (add filters).</li>
 </ul>
 
-<p><em>For v 0.0.6</em></p>
+<p><em>For v 0.0.6</em>
+ - ?</p>
 
 </body>
 </html>
