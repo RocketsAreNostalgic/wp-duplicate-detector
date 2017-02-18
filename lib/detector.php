@@ -52,23 +52,51 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_dd_in_admin' );
  * @global:     $wpdb
  * @wp-hook:    wp_ajax_title_check
  *
- * @TODO: Add mechanism for adding custom fields values in alerts
  *
  */
 
 function ajax_callback() {
-	$dupes_found_head_text = __( 'Whoa there! We found the following entries with a similar heading:', 'dupdetect' );
+	$dupes_found_head_notice = __( 'Whoa there!', 'orionrush_duplicate_detector' );
 	if ( has_filter( 'dd_dupes_response_head_text' ) ) {
+		/**
+		 * Filter the dupes found response, head notice.
+		 *
+		 * @since    0.0.3
+		 * @param string $dupes_found_head_notice
+		 */
+		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_notice );
+	}
+
+	$dupes_found_head_text = __( 'We found the following with a similar heading:', 'orionrush_duplicate_detector' );
+	if ( has_filter( 'dd_dupes_response_head_text' ) ) {
+		/**
+		 * Filter the dupes found response, head text.
+		 *
+		 * @since    0.0.3
+		 * @param string $dupes_found_foot_text
+		 */
 		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_text );
 	}
 
-	$dupes_found_foot_text = sprintf( __( 'The title(s) listed above look very similar to this one. Consider making your title more specific, or perhaps move it to the trash. %s Also pay attention to your permalink for good SEO.', 'dupdetect' ), '<br/>' );
+	$dupes_found_foot_text = sprintf( __( 'The title(s) listed above look very similar to this one. Consider making your title more unique, or perhaps move it to the trash. %s %sAlso pay attention to your permalink for good SEO.%s', 'orionrush_duplicate_detector' ), '<br/>', '<em>', '</em>' );
 	if ( has_filter( 'dd_dupes_response_foot_text' ) ) {
+		/**
+		 * Filter the dupes found response, footer text.
+		 *
+		 * @since    0.0.3
+		 * @param string $dupes_found_foot_text
+		 */
 		$dupes_found_foot_text = apply_filters( 'dd_dupes_response_foot_text', $dupes_found_foot_text );
 	}
 
 	$confirmation_text = __( 'This title looks unique!', 'dupdetect' );
 	if ( has_filter( 'dd_response_confirmation_text' ) ) {
+		/**
+		 * Filter the confirmation text.
+		 *
+		 * @since    0.0.3
+		 * @param string $confirmation_text
+		 */
 		$confirmation_text = apply_filters( 'dd_response_confirmation_text', $confirmation_text );
 	}
 
@@ -124,6 +152,15 @@ function ajax_callback() {
 		$return_json = array( "status" => "false", "notice" => $confirmation_text );
 	}
 
+	if ( has_filter( 'dd_response_return_json' ) ) {
+		/**
+		 * Filter the json response.
+		 *
+		 * @since    0.0.3
+		 * @param string $return_json
+		 */
+		$return_json = apply_filters( 'dd_response_return_json', $return_json );
+	}
 	// Log these values if we're debugging
 	\OrionRush\DuplicateDetector\Helpers\write_log( "DD Returned JSON as array:" );
 	\OrionRush\DuplicateDetector\Helpers\write_log( $return_json );
