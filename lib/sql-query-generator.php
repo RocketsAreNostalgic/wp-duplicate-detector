@@ -66,7 +66,7 @@ function sql_prepare( $search_string, $post_id, $post_status, $post_types, $by_d
 	if ( ! $post_types ) {
 		$post_types = (string) 'post';
 	}
-    $post_types = explode(' ', $post_types); // Save post types as an array
+	$post_types = explode( ' ', $post_types ); // Save post types as an array
 
 	// Array of post types
 	if ( $post_types ) {
