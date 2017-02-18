@@ -10,18 +10,19 @@ if ( ! is_admin() ) {
 /**
  * Returns the prepared sql query
  * Derived from the better-search plugin v2.1.0
- * @since	0.0.2
+ * @since   0.0.2
  *
- * @author Ajay <https://wordpress.org/plugins/better-search/>
- * @author WebberZone <https://wordpress.org/plugins/better-search/>
- * @author orionrush
+ * @author  Ajay <https://wordpress.org/plugins/better-search/>
+ * @author  WebberZone <https://wordpress.org/plugins/better-search/>
+ * @author  orionrush
  *
- * @param	array   $search_string  Search query (expects sanitised string at [0], and array of terms [1]
- * @param   string  $post_id        A space separated list of post ID's to exclude from search.
- * @param   string  $post_status    A space separated list of post status flags - defaults to 'publish' OR 'inherit'
- * @param   string  $post_types     A space separated list of post types to search
- * @param	bool    $by_date        Sort by date?
- * @return	string  $sql            The sql query to be performed
+ * @param   array $search_string //Search query (expects sanitised string at [0], and array of terms [1]
+ * @param   string $post_id // A space separated list of post ID's to exclude from search.
+ * @param   string $post_status // A space separated list of post status flags - defaults to 'publish' OR 'inherit'
+ * @param   string $post_types // A space separated list of post types to search
+ * @param   bool $by_date //Sort by date?
+ *
+ * @return  string $sql The sql query to be performed
  */
 function sql_prepare( $search_string, $post_id, $post_status, $post_types, $by_date='') {
 
