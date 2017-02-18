@@ -1,2 +1,2 @@
-.flex-grid{display:-webkit-box;display:-ms-flexbox;display:flex}.col{-webkit-box-flex:1;-ms-flex:1;flex:1;padding-left:10px}.col:first-of-type{padding-left:12%}.flex-thirds{width:15%;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;display:-webkit-box;display:-ms-flexbox;display:flex}input[type=checkbox].flex-thirds{margin-right:15px}@media screen and (max-width:782px){.flex-thirds{width:80px}}
+.col{padding-left:10px}.col:first-of-type{padding-left:12%}.thirds{width:15%}input[type=checkbox].thirds{margin-right:15px}@media screen and (max-width:782px){.thirds{width:80px}}
 /*# sourceMappingURL=admin.css.map */

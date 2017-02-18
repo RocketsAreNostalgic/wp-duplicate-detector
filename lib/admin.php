@@ -237,7 +237,7 @@ function control_post_types() {
 	$description2 = __( "Isolate duplicate title searches to this type only.", 'orionrush_duplicate_detector' );
 
 	print "\n" . $message1 . '<br/><br/>';
-	print "\n" . '<fieldset class="flex-grid">';
+	print "\n" . '<fieldset class="grid">';
 	print "\n" . '<div class="col"><em>' . $message2 . '</em></div>';
 
 	$post_types = get_public_post_types();
@@ -249,9 +249,9 @@ function control_post_types() {
 		$object          = get_post_type_object( $label );
 		$label           = $object->labels->name;
 		print "\n" . '<div class="col">
-		                    <label for="' . esc_attr( $id ) . '" class="flex-thirds">' . ucwords( esc_html( $label ) ) . ': </label> 
-		                    <input' . $checked . '          title="' . $description1 . '" id="' . esc_attr( $id ) . '"          type="checkbox" name="orionrush_duplicate_detector[' . $key . '][]"         value="' . esc_attr( $post_type ) . '"  class="flex-thirds"></input> 
-                            <input' . $checked_isolate . '  title="' . $description2 . '" id="' . esc_attr( $id ) . '_isolate"  type="checkbox" name="orionrush_duplicate_detector[' . $key . '_isolate][]" value="' . esc_attr( $post_type ) . '"  class="flex-thirds"></input>
+		                    <label for="' . esc_attr( $id ) . '" class="thirds">' . ucwords( esc_html( $label ) ) . ': </label> 
+		                    <input' . $checked . '          title="' . $description1 . '" id="' . esc_attr( $id ) . '"          type="checkbox" name="orionrush_duplicate_detector[' . $key . '][]"         value="' . esc_attr( $post_type ) . '"  class="thirds"></input> 
+                            <input' . $checked_isolate . '  title="' . $description2 . '" id="' . esc_attr( $id ) . '_isolate"  type="checkbox" name="orionrush_duplicate_detector[' . $key . '_isolate][]" value="' . esc_attr( $post_type ) . '"  class="thirds"></input>
                       </div>';
 	}
 	print "\n" . '</fieldset>';
