@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Check for minimum operating requirements
  * We've not tested this below WP 4.7
+ * If everything passes, set default values.
+ *
  * @param string $wpv - Minimum WP Version
  * @param string $phpv - Minimum PHP Version
  */
