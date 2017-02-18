@@ -156,7 +156,7 @@ function ajax_callback() {
 		/**
 		 * Filter the json response.
 		 *
-		 * @since    0.0.3
+		 * @since    0.0.4
 		 * @param string $return_json
 		 */
 		$return_json = apply_filters( 'dd_response_return_json', $return_json );
