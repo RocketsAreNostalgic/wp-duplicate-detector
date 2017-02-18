@@ -1,30 +1,19 @@
 <?php
 namespace OrionRush\DuplicateDetector;
-
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-/*
-Plugin Name:   Duplicate Detector
-Plugin URI:    https://orionrush.com
-Description:   Add lightweight plugin to help prevent post title duplication.
-Version:       0.0.3
-Author:        orion rush
-Text Domain:   dupdetect
-Author URI:    https://orionrush.com/
-License:       MIT License
-License URI:   http://opensource.org/licenses/MIT
-*/
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
 /**
- * PRO TIP:
- * When PHP errors screw up ajax requests, you'll see a warning to the effect of:
- * "Hey! We received an error: SyntaxError: Unexpected token <."
- * In this case enable WP_DEBUG, and WP_DEBUG_LOG in wp-config.php to record these errors, and show screen and browser console logs to help troubleshoot.
- * https://codex.wordpress.org/Debugging_in_WordPress
+ * Plugin Name:   Duplicate Detector
+ * Description:   Add lightweight plugin to help prevent post or page title duplication.
+ * Version:       0.0.3
+ * Author:        Ben Rush
+ * Author URI:    http://www.orionrush.com
+ * Plugin URI:    http://www.rocketsarenostalgic.net
+ * License:       GPL
+ * License URI:   https://wordpress.org/about/gpl/
+ * Text Domain:   orionrush_duplicate_detector
  */
 define('DD_PLUGIN', __FILE__ ); // The location of this plugin
 define('DD_PATH', plugin_dir_path(__FILE__));
