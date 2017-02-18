@@ -73,11 +73,9 @@ function ajax_callback() {
 	}
 
 	// Grab details from inbound POST array
-	$title      = $_POST['post_title'];
-	$post_id    = $_POST['post_id'];
-	$post_types = [];
-	$post_type  = get_post_type( $post_id );
-
+	$title     = $_POST['post_title'];
+	$post_id   = $_POST['post_id'];
+	$post_type = get_post_type( $post_id );
 
 	$options_array = get_option( 'orionrush_duplicate_detector' );
 
