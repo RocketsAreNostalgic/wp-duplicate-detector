@@ -9,6 +9,7 @@ _For v 0.0.2_
 _For v 0.0.3_
 
 * [DONE] Add a filter to the responses they can be modified
+
 * [DONE] Add Activation hook for PHP Version check to activation and message on failure
 
 _For v 0.0.4_
@@ -33,8 +34,13 @@ _For v 0.0.4_
 
 _For v 0.0.5_
 
-* Added all strings are included in pot file.
-* Roll ajax detector function into its own class so that we can extend it. 
+* [DONE] Added all strings are included in pot file.
+
+* [DONE] Modidfied post-type querey to include all posts types that are not specifically isolated.
+
+* [WONT_IMPLEMENT] (At least not at this time.)Roll ajax detector function into its own class so that we can extend it. 
 
 _For v 0.0.6_
- - ?
+* (Bumped from 0.0.5) Roll ajax detector function into its own class so that we can extend it. 
+
+* (Bumped from 0.0.4) When a post title is found to be a close duplicate (similar_text()), it is automatically converted to draft status.
