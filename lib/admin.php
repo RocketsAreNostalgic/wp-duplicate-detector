@@ -235,6 +235,7 @@ function control_post_types() {
 	$message2     = __( "Activate | Isolated search", 'orionrush_duplicate_detector' );
 	$description1 = __( "Include DD on post-type", 'orionrush_duplicate_detector' );
 	$description2 = __( "Isolate duplicate title searches to this type only.", 'orionrush_duplicate_detector' );
+	$footer = sprintf(__( "Enable DD search on available post types above. %s By enabling isolated search on a post-type, duplicate post-type searches from that post-type will be restricted to that type only. %s Likewise, results from isolated post-types, are excluded from wider duplicate post title search results.", 'orionrush_duplicate_detector' ), '<br/>','<br/>');
 
 	print "\n" . $message1 . '<br/><br/>';
 	print "\n" . '<fieldset class="grid">';
@@ -255,4 +256,5 @@ function control_post_types() {
                       </div>';
 	}
 	print "\n" . '</fieldset>';
+	print "\n" . '<div class="well"><p><em>' . $footer . '<em/></p></div>';
 }
