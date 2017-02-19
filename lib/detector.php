@@ -130,10 +130,16 @@ function ajax_callback() {
 		if ( in_array( $post_type, $options_array['post_types_isolate'] ) ) {
 			$post_types = $post_type;
 		} else {
+			// All post types, minus those isolated search
+			// ie not $options_array['post_types'].
 
-			$post_types_array = array_diff( $options_array['post_types'], $options_array['post_types_isolate'] );
+			// All public post types, minus attachments.
+			$post_types = \OrionRush\DuplicateDetector\Admin\get_public_post_types();
 
-			// Expects a space separated list...
+			// Strip out the ones that should be isolated.
+			$post_types_array = array_diff( $post_types, $options_array['post_types_isolate'] );
+
+			// get_any_matches() expects a space separated list.
 			$post_types = (string) implode( ' ', $post_types_array );
 
 			\OrionRush\DuplicateDetector\Helpers\write_log( 'DD callback, post-types being searched:' );
