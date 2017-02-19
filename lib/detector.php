@@ -80,7 +80,7 @@ function ajax_callback() {
 		$dupes_found_head_text = apply_filters( 'dd_dupes_response_head_text', $dupes_found_head_text );
 	}
 
-	$dupes_found_foot_text = sprintf( __( 'The title(s) listed above look very similar to this one. Consider making your title more unique, or perhaps move it to the trash. %s %sAlso pay attention to your permalink for good SEO.%s', 'orionrush_duplicate_detector' ), '<br/>', '<em>', '</em>' );
+	$dupes_found_foot_text = sprintf( __( 'The title(s) listed above look very similar to this one. %s Consider making your title more unique, or perhaps move it to the trash? %s %sAlso pay attention to your permalink for good SEO.%s', 'orionrush_duplicate_detector' ), '<br/>', '<br/>', '<em>', '</em>' );
 	if ( has_filter( 'dd_dupes_response_foot_text' ) ) {
 		/**
 		 * Filter the dupes found response, footer text.
