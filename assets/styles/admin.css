@@ -1,2 +1,2 @@
-.col{padding-left:10px}.col:first-of-type{padding-left:12%}.thirds{width:15%}input[type=checkbox].thirds{margin-right:15px}@media screen and (max-width:782px){.thirds{width:80px}}
+.well{max-width:75%;padding:10px;box-shadow:inset 1px 1px 5px rgba(0,0,0,.15);border-radius:4px;margin-top:20px}.col{padding-left:10px}.col:first-of-type{padding-left:12%}.thirds{width:15%}input[type=checkbox].thirds{margin-right:15px}@media screen and (max-width:782px){.thirds{width:80px}}
 /*# sourceMappingURL=admin.css.map */
