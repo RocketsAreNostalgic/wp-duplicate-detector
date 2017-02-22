@@ -2,8 +2,8 @@
 
 Adds a the ability to detect duplicate titles in posts, pages and custom post types.
 
-Look to the WordPress settings for Duplicate Detector to activate the post-types you would like DD to be active on. 
-You can now also isolate searches for a particular post-type, within that post-type. For example, a serach for a duplicate title with the 'widgets' custom post-type would only return results for other widgets, not posts, pages etc.
+Duplicate Detector settings allow you to activate any custom post-types, by default it is enabled on posts and pages.
+Here you may also isolate searches for a particular post-type, to within that post-type. For example, a search for a duplicate title with the 'widgets' custom post-type would only return results for other widgets. Conversely, when 'widgets' is isolated, it will be omitted from searches from a post or page duplicate search.
 
 ## Requirements
 * PHP >= 5.6
