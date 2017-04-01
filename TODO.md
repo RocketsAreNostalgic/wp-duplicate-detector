@@ -3,7 +3,7 @@
 _For v 0.0.2_
  
 * [DONE] Move jQuery title input filed background icon declarations into css rules, so that we are simply changing class attributes, and not declaring full paths to icon gifs.
--- We've found that this isn't always possible, as some field are locked by js during the ajax cycle, and so styles cannot be applied to them at those times. JS is able however to 'reach in', so we're sticking to this route for the spinner, especially.
+-- We've found that this isn't always possible, as some field are locked during the ajax cycle, and so styles cannot be applied to them at those times. JS is able however to 'reach in', so we're sticking to this route for the spinner, especially.
 
 
 _For v 0.0.3_
