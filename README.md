@@ -8,3 +8,6 @@ You can now also isolate searches for a particular post-type, within that post-t
 ## Requirements
 * PHP >= 5.6
 * WP >= 4.7
+
+https://user-images.githubusercontent.com/65979639/203356756-da88583b-c306-4b97-b2c5-db551f710357.mp4
+
